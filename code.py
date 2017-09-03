@@ -1,5 +1,7 @@
 from math import sqrt
-class ComplexNumber:
+from math import atan
+from math import log
+Class ComplexNumber:
     """
     The class of complex numbers.
     """
@@ -35,6 +37,17 @@ class ComplexNumber:
         Return the sum of ``self`` and ``other``.
         """
         return ComplexNumber(self.real + other.real, self.imaginary + other.imaginary)
+    def product(self, other):
+        """
+        Returns the product of "self" and "other".
+        """
+        return ComplexNumber((self.real*other.real)-(self.imaginary*other.imaginary),(self.real*other.imaginary)+(self.imaginary*other.real))
+    def complex_conjugate(self):
+        """
+        Replaces the instance by its complex conjugate.
+        """
+        ComplexNumber(self.real,-self.imaginary)
+        return ComplexNumber(self.real, -self.imaginary)
 
 class NonZeroComplexNumber(ComplexNumber):
     def __init__(self, real_part, imaginary_part):
@@ -50,3 +63,15 @@ class NonZeroComplexNumber(ComplexNumber):
         """
         den = self.real**2 + self.imaginary**2
         return NonZeroComplexNumber(self.real/den, -self.imaginary/den)
+    def polar_coordinates(self):
+        """
+        Returns the polar coordinates "r" and "theta"
+        """
+        return sqrt(self.real**2+self.imaginary**2), atan(self.imaginary/self.real)
+    def logarithm(self):
+        """
+        Returns the logarithm of complex number
+        """
+        a,b=self.polar_coordinates()
+        return ComplexNumber(log(a),b)
+ 
