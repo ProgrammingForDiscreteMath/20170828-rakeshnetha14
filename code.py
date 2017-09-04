@@ -46,7 +46,7 @@ Class ComplexNumber:
         """
         Replaces the instance by its complex conjugate.
         """
-        ComplexNumber(self.real,-self.imaginary)
+        self.imaginary= -1*self.imaginary
 
 class NonZeroComplexNumber(ComplexNumber):
     def __init__(self, real_part, imaginary_part):
